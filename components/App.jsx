@@ -6,9 +6,12 @@ import { getReadings } from '../utils/reading';
 export const App = () => {
   const [readings, setReadings] = useState();
 
-  useEffect(async () => {
-    const result = await getReadings();
-    setReadings(result);
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await getReadings();
+      setReadings(result);
+    };
+    fetchData();
   }, []);
 
   if (!readings) {
